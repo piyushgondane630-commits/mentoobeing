@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mentoobeing — Built by a student. Made for young people.</title>
+<meta name="description" content="Mentoobeing is a global, community-first mental wellbeing and self-reflection space for young people.">
+<style>
+:root{
+  --bg:#f7f5ef;--paper:#fffdf8;--ink:#111815;--muted:#68716c;--green:#164d3a;
+  --mint:#dcefe4;--blue:#e6edf5;--line:#dfe3dc;--radius:24px;--shadow:0 18px 50px rgba(17,24,21,.08);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+button,a{font:inherit}a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}
+nav{position:sticky;top:0;z-index:20;background:rgba(247,245,239,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(223,227,220,.75)}
+.navin{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:850;letter-spacing:-.04em;font-size:21px}.brand span{color:var(--green)}
+.navlinks{display:flex;gap:24px;align-items:center;font-size:14px;color:#3e4742}.navlinks a:hover{color:var(--green)}
+.menu{display:none;border:0;background:none;font-size:25px}.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:13px 20px;font-weight:750;cursor:pointer;transition:.2s transform,.2s background}.btn:hover{transform:translateY(-2px)}.primary{background:var(--green);color:white}.secondary{background:var(--ink);color:white}.ghost{background:transparent;border:1px solid var(--line)}
+.hero{padding:92px 0 74px;overflow:hidden}.heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center}.eyebrow{display:inline-flex;padding:7px 11px;border-radius:999px;background:var(--mint);color:var(--green);font-weight:750;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+h1{font-size:clamp(48px,7vw,82px);line-height:.97;letter-spacing:-.065em;margin:18px 0 24px;max-width:760px}h2{font-size:clamp(32px,5vw,52px);line-height:1;letter-spacing:-.05em;margin:0 0 18px}h3{letter-spacing:-.025em;margin:0 0 8px;font-size:20px}.lead{font-size:19px;color:#4f5953;max-width:650px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.micro{font-size:12px;color:var(--muted);margin-top:14px}
+
+/* Clean hero visual */
+.heroArt{min-height:410px;background:var(--green);border-radius:44px;position:relative;overflow:hidden;box-shadow:var(--shadow);display:flex;align-items:flex-end;padding:32px;color:white}
+.heroArt:before,.heroArt:after{display:none}
+.noise{display:none}
+.heroOrb{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.13);pointer-events:none}
+.heroOrbOne{width:360px;height:360px;right:-155px;top:-155px}
+.heroOrbTwo{width:230px;height:230px;left:-130px;bottom:-130px}
+.heroMark{position:absolute;right:24px;top:18px;font-size:clamp(170px,22vw,260px);line-height:.8;font-weight:900;letter-spacing:-.13em;color:rgba(255,255,255,.055);user-select:none}
+.heroCommunity{position:relative;z-index:2;max-width:310px}
+.heroCommunity small{display:block;font-size:11px;letter-spacing:.17em;font-weight:800;opacity:.58;margin-bottom:12px}
+.heroCommunity strong{display:block;font-size:clamp(32px,4vw,48px);line-height:.98;letter-spacing:-.055em}
+.heroCommunity span{display:block;margin-top:18px;font-size:14px;opacity:.64}
+
+.communityLinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.communityLinks a{display:inline-flex;align-items:center;gap:8px;padding:11px 15px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-size:14px;color:#34403a}.communityLinks a:hover{border-color:var(--green);color:var(--green)}.communityLinks span{opacity:.55}
+section{padding:86px 0}.sectionHead{max-width:680px;margin-bottom:34px}.sectionHead p{color:var(--muted);font-size:17px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:0 8px 30px rgba(17,24,21,.035)}.card p{color:var(--muted);margin-bottom:0}
+.story{background:var(--ink);color:white;border-radius:36px;padding:50px}.story p{color:#cbd1cd;max-width:760px;font-size:20px}.pillrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:25px}.pill{padding:9px 13px;border:1px solid rgba(255,255,255,.15);border-radius:999px;color:#e9eeeb;font-size:13px}
+.checkin{background:var(--paper);border:1px solid var(--line);border-radius:34px;padding:34px;box-shadow:var(--shadow)}.testCards{display:grid;grid-template-columns:1fr 1fr;gap:16px}.testCard{padding:26px;border-radius:24px;border:1px solid var(--line);background:#fbfaf5}.testCard .num{font-size:13px;color:var(--green);font-weight:800;text-transform:uppercase}.testCard p{color:var(--muted)}
+.guideGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.guideCard{padding:22px;border:1px solid var(--line);border-radius:22px;background:var(--paper);min-height:175px}.guideCard b{display:block;font-size:30px;color:var(--green);margin-bottom:18px}
+.community{background:var(--mint);border-radius:36px;padding:48px}.community .actions{margin-top:20px}
+footer{border-top:1px solid var(--line);padding:38px 0 50px}.footergrid{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}.footlinks{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.modal{position:fixed;inset:0;background:rgba(10,16,13,.58);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}.modal.show{display:flex}.modalbox{width:min(680px,100%);max-height:90vh;overflow:auto;background:var(--paper);border-radius:28px;padding:28px}.modalTop{display:flex;justify-content:space-between;gap:20px}.close{border:0;background:#edf0eb;border-radius:50%;width:38px;height:38px;cursor:pointer}
+.progress{height:8px;background:#e7ebe5;border-radius:99px;overflow:hidden;margin:15px 0 28px}.bar{height:100%;width:0;background:var(--green);transition:.25s}
+.question{font-size:24px;line-height:1.25;font-weight:800;letter-spacing:-.025em;margin:20px 0}.options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.opt{border:1px solid var(--line);background:#fff;border-radius:18px;padding:15px;text-align:left;cursor:pointer}.opt:hover,.opt.selected{border-color:var(--green);background:var(--mint)}.qfoot{display:flex;justify-content:space-between;align-items:center;margin-top:22px}.score{font-size:74px;font-weight:900;letter-spacing:-.07em;color:var(--green);line-height:1}.resultDomain{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}.resultDomain:last-child{border-bottom:0}.badge{font-size:12px;font-weight:800;background:var(--mint);color:var(--green);padding:5px 9px;border-radius:999px;height:max-content}
+.disclaimer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-top:22px}
+.hidden{display:none!important}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;padding:12px 18px;border-radius:999px;z-index:100;font-size:13px}
+@media(max-width:800px){.heroGrid{grid-template-columns:1fr}.hero{padding-top:60px}.heroArt{min-height:320px}.grid3,.grid2,.testCards{grid-template-columns:1fr}.guideGrid{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}.menu{display:block}.navlinks.open{display:flex;position:absolute;left:16px;right:16px;top:64px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:16px;flex-direction:column;align-items:flex-start}.story,.community{padding:30px}.options{grid-template-columns:1fr}}
+@media(max-width:460px){.wrap{width:min(100% - 22px,1120px)}h1{font-size:48px}.guideGrid{grid-template-columns:1fr}.heroArt{border-radius:30px}}
+
+.navSupport{border:0;background:transparent;color:#3e4742;padding:0;cursor:pointer;font:inherit}
+.navSupport:hover{color:var(--green)}
+.btn:focus-visible,.opt:focus-visible,.close:focus-visible,.menu:focus-visible,.navSupport:focus-visible,a:focus-visible{outline:3px solid rgba(22,77,58,.28);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+
+/* Final accessibility + polish */
+:focus-visible{outline:3px solid rgba(22,77,58,.28);outline-offset:3px}
+.btn,.communityLinks a,.footlinks a{transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease}
+.btn:active,.communityLinks a:active{transform:translateY(1px)}
+.communityLinks{align-items:center}
+.communityLinks a{white-space:nowrap}
+.modal{overscroll-behavior:contain}
+@media (max-width:720px){
+  .heroArt{min-height:360px;padding:26px;border-radius:30px}
+  .heroMark{right:12px;top:26px;font-size:170px}
+  .heroCommunity{max-width:260px}
+  .heroCommunity strong{font-size:34px}
+  .communityLinks a{flex:1 1 calc(50% - 10px);justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
+
+</style>
+
+<link rel="canonical" href="https://www.mentoobeing.in/">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Mentoobeing — Built by a student. Made for young people.">
+<meta property="og:description" content="A quiet corner of the internet for young people figuring life out.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.mentoobeing.in/">
+<meta name="theme-color" content="#164d3a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23164d3a'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial,sans-serif' font-size='38' font-weight='800' fill='white'%3EM%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Mentoobeing","url":"https://www.mentoobeing.in/","description":"A global, community-first mental wellbeing and self-reflection space for young people."}</script>
+</head>
+<body>
+<nav><div class="wrap navin">
+<a class="brand" href="#home">Mentoobeing<span>.</span></a>
+<button class="menu" aria-label="Open menu" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+<div class="navlinks">
+<a href="#checkin">Check-in</a><a href="#guide">Wellbeing Guide</a><a href="#community">Community</a><button class="navSupport" type="button" onclick="openSupport()">Support</button>
+</div></div></nav>
+
+<main id="home">
+<section class="hero"><div class="wrap heroGrid">
+<div>
+<span class="eyebrow">A community first space for young people</span>
+<h1>You don't have to have everything figured out.</h1>
+<p class="lead">Mentoobeing is a community-first space to understand what you’re carrying, reflect on what might be affecting you, and take one small step forward — together.</p>
+<div class="actions"><a class="btn primary" href="#checkin">Take a check-in</a><a class="btn ghost" href="#guide">Explore the guide</a></div>
+<p class="micro">Educational self-reflection • Non-clinical • Not a diagnosis</p>
+</div>
+<div class="heroArt" aria-label="Mentoobeing global community">
+  <div class="heroOrb heroOrbOne"></div>
+  <div class="heroOrb heroOrbTwo"></div>
+  <div class="heroMark" aria-hidden="true">M</div>
+  <div class="heroCommunity">
+    <small>MENTOOBEING</small>
+    <strong>A global community<br>for young people.</strong>
+    <span>Talk. Connect. Reflect. Grow.</span>
+  </div>
+</div></section>
+
+<section><div class="wrap"><div class="sectionHead"><span class="eyebrow">Why Mentoobeing</span><h2>Sometimes it's not one thing. It's everything at once.</h2><p>Student life can bring academic pressure, career uncertainty, comparison, relationships, loneliness, family expectations, money worries, sleep problems and an always-on digital world.</p></div>
+<div class="grid3"><article class="card"><h3>Understand</h3><p>Put words to what has been taking up space in your mind and everyday life.</p></article><article class="card"><h3>Reflect</h3><p>Notice patterns without turning them into labels or diagnoses.</p></article><article class="card"><h3>Take one small step</h3><p>Choose something practical you can try today, instead of trying to fix your whole life.</p></article></div></div></section>
+
+<section><div class="wrap"><div class="story"><span class="eyebrow">What it is</span><h2>Mentoobeing isn't here to tell you what's wrong with you.</h2><p>It's a student-first space for checking in with yourself. Your answers are meant to help you notice what may be weighing on you and what you might want to pay attention to.</p><div class="pillrow"><span class="pill">Student life</span><span class="pill">Relationships</span><span class="pill">Career pressure</span><span class="pill">Digital life</span><span class="pill">Sleep</span><span class="pill">Self-understanding</span></div></div></div></section>
+
+<section id="checkin"><div class="wrap"><div class="sectionHead"><span class="eyebrow">Check-in</span><h2>See what's taking up space right now.</h2><p>Choose the check-in that fits how much time you have. Both are for self-reflection, not diagnosis.</p><p class="micro assessment-disclaimer">Self-reflection only • Non-clinical • Not a diagnosis.</p></div>
+<div class="testCards">
+<article class="testCard"><div class="num">01 / Basic</div><h3>Basic Check-in</h3><p>15 questions covering mood, worry, stress, sleep, focus, digital habits, connection and student pressure.</p><button class="btn primary" onclick="startTest('basic')">Start basic</button></article>
+<article class="testCard"><div class="num">02 / Advanced</div><h3>Advanced Check-in</h3><p>31 questions covering mood, worry, stress, sleep, focus, digital habits, connection and student pressure.</p><button class="btn secondary" onclick="startTest('advanced')">Start advanced</button></article>
+</div></div></section>
+
+<section id="guide"><div class="wrap"><div class="sectionHead"><span class="eyebrow">Wellbeing Guide</span><h2>Don't fix your whole life. Start with one thing.</h2><p>Eight practical areas. Pick the one that feels relevant instead of trying to do everything at once.</p></div>
+<div class="guideGrid">
+<div class="guideCard"><b>01</b><h3>Get Out of Your Head</h3><p>Go outside, slow down and notice what's around you.</p></div>
+<div class="guideCard"><b>02</b><h3>Move Your Body</h3><p>Walk, cycle, stretch, play, dance or train. Something is better than nothing.</p></div>
+<div class="guideCard"><b>03</b><h3>Fix Your Sleep, Not Your Whole Life</h3><p>Work on a realistic sleep routine and identify what keeps getting in the way.</p></div>
+<div class="guideCard"><b>04</b><h3>Take Back Control of Your Phone</h3><p>Notice your triggers and choose one boundary that feels doable.</p></div>
+<div class="guideCard"><b>05</b><h3>Understand Your Thoughts & Emotions</h3><p>Separate what happened, what you feel, what you tell yourself and what you know.</p></div>
+<div class="guideCard"><b>06</b><h3>Don't Handle Everything Alone</h3><p>Make space for honest conversations, support and healthy boundaries.</p></div>
+<div class="guideCard"><b>07</b><h3>Deal With Pressure, Not Your Entire Future</h3><p>Sort things into NOW, NEXT and NOT IN MY CONTROL.</p></div>
+<div class="guideCard"><b>08</b><h3>Be On Your Own Side</h3><p>Notice harsh self-talk and ask whether you'd speak to a friend that way.</p></div>
+</div></div></section>
+
+<section id="community"><div class="wrap"><div class="community"><span class="eyebrow">Community</span><h2>You don't have to figure everything out alone.</h2><p>We are building the community first — a global space where young people can talk, reflect, connect and figure life out together, wherever they are.</p><div class="actions"><a class="btn primary" target="_blank" rel="noopener" href="https://discord.gg/UJM6Nx8Py">Join Discord</a><a class="btn ghost" target="_blank" rel="noopener" href="https://ig.me/j/a8loTmdTV4O5iQVm/">Group Chat</a></div><div class="communityLinks" aria-label="Mentoobeing community links">
+  <a href="https://discord.gg/UJM6Nx8Py" target="_blank" rel="noopener">Discord <span>↗</span></a>
+  <a href="https://youtube.com/@mentoobeing?si=1wDDbRNmVqPiaw1k" target="_blank" rel="noopener">YouTube <span>↗</span></a>
+  <a href="https://www.reddit.com/u/mentoobeing/s/2qjjn9bDgr" target="_blank" rel="noopener">Reddit <span>↗</span></a>
+  <a href="https://www.instagram.com/mentoobeing?stkn=MWdhN2o2OTdtbWdjbw==" target="_blank" rel="noopener">Instagram <span>↗</span></a>
+</div></div></div></section>
+
+<section id="support"><div class="wrap"><div class="sectionHead"><span class="eyebrow">Support Mentoobeing</span><h2>Like what we're building?</h2><p>If Mentoobeing helps you, you can support the project with a coffee.</p></div><button class="btn primary" onclick="openSupport()">Buy Us a Coffee ☕</button></div></section>
+</main>
+
+<footer><div class="wrap footergrid"><div><div class="brand">Mentoobeing<span>.</span></div><div class="micro">Built by a student. Made for young people.</div></div><div class="footlinks">
+<a href="javascript:void(0)" onclick="openInfo('about')">About</a><a href="javascript:void(0)" onclick="openInfo('faq')">FAQ</a><a href="mailto:mentoobeing@gmail.com">Contact</a><a href="javascript:void(0)" onclick="openInfo('privacy')">Privacy Policy</a><a href="javascript:void(0)" onclick="openInfo('terms')">Terms of Use</a><a href="javascript:void(0)" onclick="openInfo('disclaimer')">Disclaimer</a><a href="javascript:void(0)" onclick="openInfo('sources')">Sources</a>
+</div></div></footer>
+
+<div class="modal" id="testModal" aria-hidden="true"><div class="modalbox">
+<div class="modalTop"><div><span class="eyebrow" id="testLabel">Check-in</span><h2 id="qTitle">Let's check in.</h2></div><button class="close" onclick="closeModal('testModal')">×</button></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div id="questionArea"></div>
+<div class="qfoot"><span class="micro" id="qCount"></span><div><button class="btn ghost" id="backBtn" onclick="prevQ()">Back</button> <button class="btn primary" id="nextBtn" onclick="nextQ()">Next</button></div></div>
+</div></div>
+
+<div class="modal" id="resultModal" aria-hidden="true"><div class="modalbox"><div class="modalTop"><div><span class="eyebrow">Your result</span><h2>Your snapshot</h2></div><button class="close" onclick="closeModal('resultModal')">×</button></div><div id="resultArea"></div></div></div>
+
+<div class="modal" id="supportModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="supportTitle"><div class="modalbox">
+<div class="modalTop"><div><span class="eyebrow">Support Mentoobeing</span><h2 id="supportTitle">Buy Us a Coffee ☕</h2></div><button class="close" type="button" aria-label="Close support" onclick="closeModal('supportModal')">×</button></div>
+<p>Mentoobeing is a community-first project. If you want to support what we're building, you can contribute a coffee. There is absolutely no obligation.</p>
+<div class="card"><div class="micro" style="margin-top:0">UPI ID</div><div style="display:flex;gap:8px;align-items:center;margin-top:7px"><code style="flex:1;overflow-wrap:anywhere">piyushgondane620-1@okaxis</code><button class="btn ghost" type="button" onclick="copyUPI()">Copy</button></div></div>
+</div></div></div>
+
+<script>
+const basic = [
+["Have you been feeling low, down, or emotionally drained?","mood"],
+["Have you lost interest in things you usually enjoy?","mood"],
+["Have you been feeling stressed or overwhelmed by things in your life?","stress"],
+["Have you found it hard to relax because your mind feels busy or pressured?","anxiety"],
+["Have you been worrying about things again and again?","anxiety"],
+["Do your thoughts keep going over the same problem even when you want to stop?","anxiety"],
+["Have you been having trouble falling asleep, staying asleep, or getting enough sleep?","sleep"],
+["Have you been feeling tired or low on energy during the day?","sleep"],
+["Have you found it harder to focus on studying, work, or everyday things?","focus"],
+["Have you been putting off things even when you know they need to be done?","focus"],
+["Have you spent more time on your phone or social media than you planned to?","digital"],
+["Have you kept scrolling even when you were no longer enjoying it?","digital"],
+["Have you felt lonely or disconnected from the people around you?","connection"],
+["Have studies, exams, career plans, or expectations from others been weighing on you?","pressure"],
+["Have these experiences made it harder to keep up with your usual daily life?","function"]
+];
+
+const advanced = [
+["Have you been feeling sad, low, empty, or emotionally drained?","mood"],["Have you lost interest in things you normally enjoy?","mood"],["Have you found it harder than usual to feel happy or excited about things?","mood"],["Have you felt that things will not get better, even when you try?","mood"],
+["Have you been worrying about things again and again, even when you cannot do anything about them right now?","anxiety"],["Do your thoughts keep going over the same problem again and again?","anxiety"],["Have you often felt nervous, restless, or on edge?","anxiety"],["Has worrying made it difficult to focus on what you are doing?","anxiety"],
+["Have you felt overwhelmed by your studies, work, responsibilities, or personal life?","stress"],["Have small problems felt much harder to handle than usual?","stress"],["Have you felt like you have too many things to deal with at once?","stress"],
+["Have you had trouble falling asleep, staying asleep, or getting enough sleep?","sleep"],["Has your sleep schedule been very different from what feels normal for you?","sleep"],["Have you felt tired or low on energy during the day?","sleep"],["Have you woken up feeling tired even after what seemed like enough sleep?","sleep"],
+["Have you found it difficult to concentrate while studying, working, reading, or listening?","focus"],["Have you been putting off important things or struggling to start or finish everyday tasks, even when you know they need to be done?","focus"],["Have you felt less motivated to do things that normally matter to you?","focus"],
+["Have you spent more time on your phone than you planned to?","digital"],["Have you kept scrolling even when you were no longer enjoying it?","digital"],["Have you used your phone or social media to avoid boredom, stress, or uncomfortable feelings?","digital"],["Has late-night phone use affected your sleep or how you feel the next day?","digital"],
+["Have you felt lonely even when you were around other people?","connection"],["Have you been avoiding people or social situations more than usual?","connection"],["Have problems with a relationship, friendship, or someone close to you been affecting how you feel?","connection"],["Have you wished you had someone you could honestly talk to about what you're going through?","connection"],
+["Have you often compared yourself with other people and felt that you are falling behind?","self"],["Have you been very hard on yourself when you make mistakes?","self"],["Have you often felt that you are not good enough, even when you are trying?","self"],["Have exams, grades, placements, internships, money, or career decisions been causing you significant stress?","pressure"],["Have expectations from family, college, society, or yourself made you feel like you constantly need to do more?","pressure"]
+];
+const opts=["Never","Sometimes","Often","Almost every day"];
+const values=[0,1,2,3];
+let state={type:null,qs:[],i:0,answers:[]};
+
+function openModal(id){const el=document.getElementById(id);if(!el)return;el.classList.add("show");el.setAttribute("aria-hidden","false")}
+function closeModal(id){const el=document.getElementById(id);if(!el)return;el.classList.remove("show");el.setAttribute("aria-hidden","true")}
+function startTest(type){
+ state={type,qs:type==="basic"?basic:advanced,i:0,answers:[]};
+ document.getElementById("testLabel").textContent=type==="basic"?"Basic check-in":"Advanced check-in";
+ document.getElementById("qTitle").textContent="Think about the past 2 weeks.";
+ renderQ();openModal("testModal");
+}
+function renderQ(){
+ const q=state.qs[state.i];
+ document.getElementById("bar").style.width=((state.i+1)/state.qs.length*100)+"%";
+ document.getElementById("qCount").textContent=`${state.i+1} of ${state.qs.length}`;
+ document.getElementById("backBtn").style.visibility=state.i?"visible":"hidden";
+ document.getElementById("nextBtn").textContent=state.i===state.qs.length-1?"See my result":"Next";
+ document.getElementById("questionArea").innerHTML=`<div class="question">${q[0]}</div>
+ <div class="micro">Choose the answer that feels closest to your experience.</div>
+ <div class="options">${opts.map((x,j)=>`<button type="button" class="opt ${state.answers[state.i]===j?'selected':''}" aria-pressed="${state.answers[state.i]===j}" onclick="choose(${j})">${x}</button>`).join("")}</div>`;
+}
+function choose(v){state.answers[state.i]=v;renderQ()}
+function nextQ(){
+ if(state.answers[state.i]===undefined){toast("Choose an answer first.");return}
+ if(state.i<state.qs.length-1){state.i++;renderQ();return}
+ showResult();
+}
+function prevQ(){if(state.i>0){state.i--;renderQ()}}
+function showResult(){
+ const scored=state.answers;
+ const score=Math.round((scored.reduce((a,b)=>a+b,0)/scored.length/3)*80);
+ const map={mood:"Depression-related symptoms",anxiety:"Anxiety-related symptoms",stress:"Stress & Overload",sleep:"Sleep & Energy",focus:"Focus & Motivation",digital:"Digital Habits",connection:"Connection & Relationships",self:"Self-view & Student Pressure",pressure:"Student Pressure",function:"Daily Functioning"};
+ const sums={},counts={};
+ state.qs.forEach((q,idx)=>{sums[q[1]]=(sums[q[1]]||0)+(state.answers[idx]||0);counts[q[1]]=(counts[q[1]]||0)+1});
+ const domains=Object.keys(sums).map(k=>({k,avg:sums[k]/counts[k]})).sort((a,b)=>b.avg-a.avg);
+ const strongest=domains.slice(0,2).map(d=>map[d.k]).join(" and ");
+ const prev=localStorage.getItem("mentoobeing_"+state.type);
+ localStorage.setItem("mentoobeing_"+state.type,score);
+ let progress=prev===null?"":`<div class="card" style="margin-top:14px"><h3>Progress</h3><p>Previous score: <strong>${prev}/80</strong> · Current score: <strong>${score}/80</strong>.</p><p>${score<Number(prev)?"Some of the things weighing on you may be lighter this time.":"Wellbeing isn't a straight line. Look at which areas changed and what may have contributed."}</p></div>`;
+ let guide=strongest.includes("Sleep")?"Fix Your Sleep, Not Your Whole Life":strongest.includes("Digital")?"Take Back Control of Your Phone":strongest.includes("Stress")||strongest.includes("Pressure")?"Deal With Pressure, Not Your Entire Future":strongest.includes("Connection")?"Don't Handle Everything Alone":strongest.includes("Anxiety")?"Understand Your Thoughts & Emotions":"Be On Your Own Side";
+ document.getElementById("resultArea").innerHTML=`
+ <div><div class="micro">A snapshot of how much you're currently carrying.</div><div class="score">${score}</div><div class="micro">/ 80 · Non-clinical • For self-reflection • Not a diagnosis</div></div>
+ <div class="card" style="margin-top:22px"><h3>What may be weighing on you</h3><p>Your answers suggest that <strong>${strongest||"a few areas"}</strong> are taking up more space right now.</p></div>
+ <div class="card" style="margin-top:14px"><h3>Domain snapshot</h3>${domains.map(d=>`<div class="resultDomain"><span>${map[d.k]}</span><span class="badge">${d.avg.toFixed(1)} / 3</span></div>`).join("")}</div>
+ <div class="card" style="margin-top:14px"><h3>Your next small step</h3><p>Start with <strong>${guide}</strong>. You don't need to fix everything today. Choose one practical action and see what changes.</p><a class="btn primary" href="#guide" onclick="closeModal('resultModal')">Open the guide</a></div>
+ ${progress}
+ <div class="card" style="margin-top:14px;border-color:#d7ddd6;background:#f7f9f5">
+   <div class="micro" style="margin-top:0">NEED IMMEDIATE SUPPORT?</div>
+   <h3>If you feel suicidal or unsafe</h3>
+   <p>If you feel you may hurt yourself or cannot keep yourself safe, please don't handle that moment alone. Reach out to someone you trust or a professional right now.</p>
+   <div class="actions" style="margin-top:14px">
+     <a class="btn primary" href="tel:112">Call 112</a>
+     <a class="btn ghost" href="tel:14416">Tele-MANAS 14416</a>
+   </div>
+   <p class="micro">If you're in immediate danger, call 112 or go to the nearest emergency department.</p>
+ </div>
+ <p class="disclaimer">Mentoobeing is a non-clinical self-reflection tool. Your score and results are not a medical diagnosis, clinical assessment, or substitute for professional mental-health care.</p>`;
+ closeModal("testModal");openModal("resultModal");
+}
+function openInfo(kind){
+ const data={
+  about:["About Mentoobeing",`<p><strong>Mentoobeing is a global, community-first space for young people.</strong></p><p>It is built around a simple idea: you do not have to figure everything out alone. Mentoobeing gives young people a quieter place to check in, reflect on what is taking up space in their lives, discover practical wellbeing ideas and connect with a wider community.</p><p><strong>Built by a student. Made for young people.</strong></p><p>Understand. Reflect. Take one small step.</p>`],
+  faq:["Frequently Asked Questions",`<p><strong>What is Mentoobeing?</strong><br>A global community-first space for young people to talk, connect, reflect and figure life out together.</p><p><strong>Are the check-ins diagnostic?</strong><br>No. They are educational self-reflection tools and do not diagnose mental-health conditions.</p><p><strong>Who is it for?</strong><br>Young people navigating everyday pressure, uncertainty, relationships, career questions, comparison, loneliness or simply trying to understand themselves better.</p><p><strong>Can Mentoobeing replace professional help?</strong><br>No. If you need professional care, speak with a qualified mental-health professional or another trusted person.</p><p><strong>What if I feel unsafe?</strong><br>If you are in immediate danger in India, call 112. Tele-MANAS can be reached at 14416. If you are elsewhere, contact your local emergency service or crisis support.</p><p><strong>How can I contact Mentoobeing?</strong><br>Email <a href="mailto:mentoobeing@gmail.com">mentoobeing@gmail.com</a>.</p>`],
+  privacy:["Privacy Policy",`<p>Mentoobeing is designed to keep the experience simple and respectful. Assessment progress and answers used by the check-in experience are handled within the website and may be stored locally in your browser so the experience can work without an account.</p><p>Do not enter highly sensitive personal information into any free-text field. External community platforms linked from Mentoobeing, including Instagram, Discord, YouTube and Reddit, have their own privacy policies and data practices.</p><p>This page describes the current prototype's approach and should be updated if the production site introduces accounts, analytics, servers or other data collection.</p>`],
+  terms:["Terms of Use",`<p>By using Mentoobeing, you agree to use the website responsibly and lawfully.</p><p>Mentoobeing's check-ins, guides and other wellbeing content are provided for general self-reflection and educational purposes. They are not medical advice, diagnosis, treatment or a substitute for professional care.</p><p>Do not rely on Mentoobeing for emergencies. If you are in immediate danger in India, call 112 or seek urgent local help.</p><p>Community links lead to third-party platforms that operate under their own terms and rules.</p>`],
+  disclaimer:["Disclaimer",`<p>Mentoobeing provides educational wellbeing and self-reflection content. Assessment results are not clinical measurements and should not be interpreted as a diagnosis or professional mental-health evaluation.</p><p>If something feels overwhelming, persistent or unsafe, consider speaking with a qualified professional or another trusted person. In an immediate emergency in India, call 112.</p>`],
+  sources:["Sources & Support",`<p>Mentoobeing is intentionally community-first and does not present itself as a medical authority.</p><p>Emergency information currently shown for India: <strong>112</strong> for emergency assistance and <strong>Tele-MANAS 14416</strong> for mental-health support.</p><p>Community destinations: Instagram, Discord, YouTube and Reddit. These are external platforms and their own policies and availability apply.</p>`]
+ };
+ const item=data[kind]||data.about;
+ document.getElementById("infoTitle").textContent=item[0];
+ document.getElementById("infoArea").innerHTML=item[1];
+ openModal("infoModal");
+}
+
+function openSupport(){openModal("supportModal")}
+function toast(t){const x=document.createElement("div");x.className="toast";x.textContent=t;document.body.appendChild(x);setTimeout(()=>x.remove(),1800)}
+
+document.addEventListener("click",e=>{document.querySelectorAll(".modal.show").forEach(m=>{if(e.target===m)closeModal(m.id)})});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".modal.show").forEach(m=>closeModal(m.id))});
+
+</script>
+<div class="modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle" aria-hidden="true"><div class="modalbox">
+<div class="modalTop"><div><span class="eyebrow">Mentoobeing</span><h2 id="infoTitle">About</h2></div><button class="close" type="button" aria-label="Close" onclick="closeModal('infoModal')">×</button></div>
+<div id="infoArea"></div></div></div>
+</body>
+</html>
